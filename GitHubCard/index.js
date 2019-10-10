@@ -50,6 +50,15 @@ axios
      console.log(userData);
     console.log(res.data.avatar_url);
     cards.appendChild(createCard(userData));
+
+    return axios 
+            .get("https://api.github.com/users/Humphreyj/followers")
+            .then(response => {
+              console.log(response.data);
+              response.data.forEach(item => {
+                cards.appendChild(createCard(item));
+              })
+            })
     
   })
   .catch(err => {
@@ -57,20 +66,20 @@ axios
   })
 
 let followersArray = ['brianetaveras','andrewogle','Franzferdinan51','daetor2012'];
-followersArray.forEach(person => {
-  axios
-  .get(`https://api.github.com/users/${person}`)
-  .then(res => {
-     let userData = res.data;
-     console.log(userData);
-    console.log(res.data.avatar_url);
-    cards.appendChild(createCard(userData));
+// followersArray.forEach(person => {
+//   axios
+//   .get(`https://api.github.com/users/${person}`)
+//   .then(res => {
+//      let userData = res.data;
+//     //  console.log(userData);
     
-  })
-  .catch(err => {
-    console.log(err);
-  })
-})
+//     cards.appendChild(createCard(userData));
+    
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+// })
 
 
 
@@ -114,7 +123,7 @@ followersArray.forEach(person => {
     cardInfo.appendChild(profile);
       //profile link
         const profileLink = document.createElement('a');
-        profileLink.href = object.url;
+        profileLink.href = object.html_url;
         
         profile.innerHTML= `<a href='${profileLink}'>${profileLink}</a>`;
       //profile link
@@ -144,7 +153,7 @@ followersArray.forEach(person => {
     //bio
 
 
-    console.log(card);
+    // console.log(card);
     return card;
     
   }
