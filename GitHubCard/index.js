@@ -56,7 +56,22 @@ axios
     console.log(err);
   })
 
-let followersArray = [];
+let followersArray = ['brianetaveras','andrewogle','Franzferdinan51','daetor2012'];
+followersArray.forEach(person => {
+  axios
+  .get(`https://api.github.com/users/${person}`)
+  .then(res => {
+     let userData = res.data;
+     console.log(userData);
+    console.log(res.data.avatar_url);
+    cards.appendChild(createCard(userData));
+    
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
 
 
   function createCard(object) {
