@@ -40,7 +40,8 @@
           user, and adding that card to the DOM.
 */
 
-
+const cards = document.querySelector('.cards');
+console.log(cards);
 
 axios
   .get('https://api.github.com/users/humphreyj')
@@ -48,7 +49,7 @@ axios
      let userData = res.data;
      console.log(userData);
     console.log(res.data.avatar_url);
-    createCard(userData)
+    cards.appendChild(createCard(userData));
     
   })
   .catch(err => {
@@ -100,7 +101,7 @@ let followersArray = [];
         const profileLink = document.createElement('a');
         profileLink.href = object.url;
         
-        profile.innerHTML= profileLink;
+        profile.innerHTML= `<a href='${profileLink}'>${profileLink}</a>`;
       //profile link
     //Profile
 
