@@ -24,27 +24,78 @@
           user, and adding that card to the DOM.
 */
 
+axios
+  .get('https://api.github.com/users/humphreyj')
+  .then(res => {
+    console.log(res.data);
+  })
+
 const followersArray = [];
 
-/* Step 3: Create a function that accepts a single object as its only argument,
-          Using DOM methods and properties, create a component that will return the following DOM element:
 
-<div class="card">
-  <img src={image url of user} />
-  <div class="card-info">
-    <h3 class="name">{users name}</h3>
-    <p class="username">{users user name}</p>
-    <p>Location: {users location}</p>
-    <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
-    </p>
-    <p>Followers: {users followers count}</p>
-    <p>Following: {users following count}</p>
-    <p>Bio: {users bio}</p>
-  </div>
-</div>
+  function createCard(object) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    //IMG
+    const cardImg = document.createElement('img');
+    card.appendChild(cardImg);
+    //IMG
+    //CARD INFO
+    const cardInfo = document.createElement('div');
+    cardInfo.classList.add('card-info');
+    card.appendChild(cardInfo);
+    //start appending to card info
+    //Name
+    const name = document.createElement('h3');
+    name.classList.add('name');
+    cardInfo.appendChild(name);
+    //Name
 
-*/
+    //USERNAME
+    const userName = document.createElement('p');
+    userName.classList.add('username');
+    cardInfo.appendChild(userName);
+    //USERNAME
+
+    //LOCATION
+    const location = document.createElement('p');
+    location.classList.add('location');
+    cardInfo.appendChild(location);
+    //LOCATION
+
+    //Profile
+    const profile = document.createElement('p')
+    profile.classList.add('profile');
+    cardInfo.appendChild(profile);
+      //profile link
+        const profileLink = document.createElement('a');
+        profile.appendChild(profileLink);
+      //profile link
+    //Profile
+
+    //Followers
+    const followers = document.createElement('p');
+    cardInfo.appendChild(followers);
+    //Followers
+    //Following
+    const following = document.createElement('p');
+    cardInfo.appendChild(following);
+    //Following
+
+    //bio
+    const bio = document.createElement('p');
+    cardInfo.appendChild(bio);
+    //bio
+
+
+    console.log(card);
+    return card;
+    
+  }
+
+  
+
+  createCard();
 
 /* List of LS Instructors Github username's: 
   tetondan
