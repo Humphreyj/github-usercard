@@ -132,13 +132,15 @@ let followersArray = ['brianetaveras','andrewogle','Franzferdinan51','daetor2012
     //Followers
     const followers = document.createElement('p');
     // followersArray = [object.followers];
-    followers.textContent = object.followers;
+    
+
+    object.followers === undefined ? followers.textContent = '' : followers.textContent = `Followers: ${object.followers}`;
     cardInfo.appendChild(followers);
     //Followers
     //Following
     
     const following = document.createElement('p');
-    following.textContent = object.following;
+    object.following === undefined ? following.textContent = '' : following.textContent = `Following: ${object.following}`;
     cardInfo.appendChild(following);
     //Following
 
