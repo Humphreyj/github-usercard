@@ -59,8 +59,8 @@ axios
                 axios
                 .get(`https://api.github.com/users/${item.login}`)
                 .then(resp => {
-                  console.log(resp);
-                  cards.appendChild(createCard(item));
+                  console.log(resp.data);
+                  cards.appendChild(createCard(resp.data));
                 })
                 
               })
