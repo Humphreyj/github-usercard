@@ -52,11 +52,17 @@ axios
     cards.appendChild(createCard(userData));
 
     return axios 
-            .get("https://api.github.com/users/Humphreyj/followers")
+            .get(res.data.followers_url)
             .then(response => {
-              console.log(response.data);
+              console.log(response);
               response.data.forEach(item => {
-                cards.appendChild(createCard(item));
+                axios
+                .get(`https://api.github.com/users/${item.login}`)
+                .then(resp => {
+                  console.log(resp);
+                  cards.appendChild(createCard(item));
+                })
+                
               })
             })
     
